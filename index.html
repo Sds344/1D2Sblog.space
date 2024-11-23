@@ -1,29 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>1D2S个人网站</title>
-    <style>
-        body {
-            background-color: lightgrey;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-        }
-        h1 {
-            text-align: center;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的博客</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!--链接到谷歌下载并使用Roboto字体，常规字体400，粗体700，swap指的是显示策略：立即显示系统字体，等到自定义字体加载完了再切换成我设计的字体，减少网页初次加载的闪烁，-->
+    <link rel="stylesheet" href="style.css">
+    <!--链接到样式库，可以在样式库进行快捷的修改样式-->
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+    <!--使用fetch api加载markdown文件，使用showdown.js转化为HTML-->
 </head>
+
+
+
+
+
 <body>
-    <div class="container">
-        <h1>很高兴你来到这里, 你可以在以下的网站找到我</h1>
-        <p>这里是网站的介绍和说明。</p>
-        <p>个人微信公众号：我在cupl学eco</p>
+    <header>
+        <h1>欢迎来到1d2s博客</h1>
+    </header>
+
+    <div class="fullsceen-image" id="fullsceen-image">
+        <img src="./picture/代餐.jpg" alt="./picture/welcomeimage.jpg">
     </div>
+        
+    <main id="content">
+        <!-- 内容将在这里加载 -->
+    </main>
+    
+    <script>
+        // 使用Fetch API加载Markdown文件
+        async function loadContent() {
+            const contentElement = document.getElementById('content');
+
+            try {
+                // 加载第一个文章
+                const response = await fetch('./content/post1.md');
+                const text = await response.text();
+
+                // 将Markdown转换为HTML（需要一个库如marked.js）
+                const converter = new showdown.Converter();
+                const html = converter.makeHtml(text);
+
+                // 将HTML插入页面
+                contentElement.innerHTML = html;
+            } catch (error) {
+                console.error('加载内容时出错:', error);
+                contentElement.innerHTML = '<p>加载内容时出错，请稍后重试。</p>';
+            }
+        }
+
+        loadContent();
+    </script>
+
+    <footer>
+        <p>&copy; 2024 1d2sblog. 保留所有权利。</p>
+    </footer>
 </body>
+
+
+
 </html>
