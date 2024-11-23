@@ -1,0 +1,39 @@
+header {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.fullscreen-image {
+    position: fixed;
+    size-adjust: 80%;
+    background-color: darkgray;
+    display: flex;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: darkgray;
+    text-align: center;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #333;
+    color: white;
+}
